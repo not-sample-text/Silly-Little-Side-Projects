@@ -1,0 +1,23 @@
+@font-face {
+	font-family: "DSEG7";
+	src: url("fonts/DSEG7ClassicMini-Bold.ttf") format("truetype");
+	font-weight: bold;
+	font-style: normal;
+}
+
+@tailwind base;
+
+body {
+	text-shadow: 0 0 20px rgba(255, 255, 255, 0.551);
+	font-family: "DSEG7", cursive;
+	@apply bg-stone-900 text-white h-screen flex flex-col justify-center items-center gap-10;
+}
+
+#time {
+	@apply text-9xl font-bold;
+}
+
+#date {
+	font-family: "Sofia Sans Condensed", sans-serif;
+	@apply text-5xl;
+}
