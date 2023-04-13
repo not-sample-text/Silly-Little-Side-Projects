@@ -1,0 +1,24 @@
+@tailwind base;
+
+body {
+	@apply flex;
+}
+
+form {
+	@apply gap-5 flex flex-col h-screen w-44 p-5 border-r border-black;
+}
+
+.square-parent {
+	@apply flex w-full p-5;
+}
+
+.square1 {
+	@apply h-40 w-40 bg-red-500;
+}
+.square2 {
+	@apply h-40 w-40 bg-green-500;
+}
+
+label {
+	@apply capitalize;
+}
