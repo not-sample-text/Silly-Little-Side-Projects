@@ -8,8 +8,8 @@
 @tailwind base;
 
 body {
-	text-shadow: 0 0 20px rgba(255, 255, 255, 0.551);
-	font-family: "DSEG7", cursive;
+	/* text-shadow: 0 0 5px rgba(255, 255, 255, 0.551); */
+	font-family: "DSEG7", monospace;
 	@apply bg-stone-900 text-white h-screen flex flex-col justify-center items-center gap-10;
 }
 
@@ -18,6 +18,6 @@ body {
 }
 
 #date {
-	font-family: "Sofia Sans Condensed", sans-serif;
-	@apply text-5xl;
+	font-family: "DSEG7", serif;
+	@apply text-7xl;
 }

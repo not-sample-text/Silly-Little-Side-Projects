@@ -527,8 +527,8 @@ video {
 }
 
 body {
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.551);
-  font-family: "DSEG7", cursive;
+  /* text-shadow: 0 0 5px rgba(255, 255, 255, 0.551); */
+  font-family: "DSEG7", monospace;
   display: flex;
   height: 100vh;
   flex-direction: column;
@@ -548,7 +548,7 @@ body {
 }
 
 #date {
-  font-family: "Sofia Sans Condensed", sans-serif;
-  font-size: 3rem;
+  font-family: "DSEG7", serif;
+  font-size: 4.5rem;
   line-height: 1;
 }
