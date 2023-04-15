@@ -8,16 +8,16 @@
 @tailwind base;
 
 body {
-	/* text-shadow: 0 0 5px rgba(255, 255, 255, 0.551); */
-	font-family: "DSEG7", monospace;
+	text-shadow: 0 0 500px rgba(255, 255, 255, 1);
 	@apply bg-stone-900 text-white h-screen flex flex-col justify-center items-center gap-10;
 }
 
 #time {
+	font-family: "DSEG7", monospace;
 	@apply text-9xl font-bold;
 }
 
 #date {
-	font-family: "DSEG7", serif;
-	@apply text-7xl;
+	font-family: "Sofia Sans Condensed", serif;
+	@apply text-7xl capitalize;
 }
