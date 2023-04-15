@@ -12,10 +12,10 @@ Once the clock screen saver is running, the current time and date will be displa
 
 ## Credits
 
-This project was created by not-sample-text and is licensed under the [MIT License](LICENSE).
+This project was created by not-sample-text and is licensed under the [MIT License](LICENSE.md).
 
 The fonts used in this project is "Sofia Sans Condensed" from Google Fonts and [DSEG7](https://www.keshikan.net/fonts-e.html).
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute this software as long as you include the original copyright and license notice in any copy of the software. Contributions are welcome – please fork this repository and submit a pull request to contribute.
+This project is licensed under the [MIT License](LICENSE.md). You are free to use, modify, and distribute this software as long as you include the original copyright and license notice in any copy of the software. Contributions are welcome – please fork this repository and submit a pull request to contribute.
