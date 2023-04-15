@@ -4,7 +4,7 @@ This project is a simple clock screen saver that displays the current time and d
 
 ## Installation
 
-To use the clock screen saver, simply clone the repository to your local machine using `git clone https://github.com/your-username/clock-screen-saver.git` and open the `index.html` file in your browser.
+To use the clock screen saver, simply clone the repository to your local machine using `git clone https://github.com/not-sample-text/clock-screen-saver.git` and open the `index.html` file in your browser.
 
 ## Usage
 
