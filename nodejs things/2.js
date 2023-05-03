@@ -46,6 +46,7 @@ main ()
 			length_arr = i;
 			medie = sum / length_arr;
 			console.log(`Media: ${medie.toFixed(2)}`);
+
 			break;
 		} else if (isNaN(num)) {
 			console.log("Introduceti un numar valid.");
