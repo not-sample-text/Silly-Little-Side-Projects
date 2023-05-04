@@ -1,0 +1,42 @@
+@import url(reset.css);
+
+:root {
+	--grad-clr: royalblue;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+.grad {
+	position: absolute;
+}
+
+.grad1 {
+	inset: 0;
+	width: 200%;
+	background-image: linear-gradient(transparent, var(--grad-clr), transparent);
+	rotate: 30deg;
+}
+.grad2 {
+	inset: 0;
+	width: 100%;
+	background-image: linear-gradient(transparent, var(--grad-clr));
+	rotate: 30deg;
+}
+
+section {
+	position: relative;
+}
+
+section img {
+	width: 100%;
+}
+
+section:first-of-type {
+	background-color: red;
+}
+
+section:last-of-type {
+	background-color: pink;
+}
