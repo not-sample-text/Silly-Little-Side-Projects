@@ -10,9 +10,9 @@ To use the Flex Helper, simply open the index.html file in a web browser. The in
 
 The interface includes three sets of radio buttons, each controlling a different flex property of the square element:
 
-    - Flex Direction: controls the direction of the flex container (either row or column).
-    - Align Items: controls the alignment of flex items within the flex container.
-    - Justify Content: controls the distribution of space between and around flex items along the main axis.
+* Flex Direction: controls the direction of the flex container (either row or column).
+* Align Items: controls the alignment of flex items within the flex container.
+* Justify Content: controls the distribution of space between and around flex items along the main axis.
 
 Simply click on a radio button to adjust the corresponding property of the square element. The changes will be immediately reflected in the display of the square element.
 
