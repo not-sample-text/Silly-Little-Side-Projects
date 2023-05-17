@@ -1,34 +1,48 @@
-const ytdl = require("ytdl-core");
+const ytdl = require("ytdl-core-discord");
 const ffmpeg = require("fluent-ffmpeg");
 const ffmpegStatic = require("ffmpeg-static");
 const fs = require("fs");
 
 // List of YouTube video URLs or YouTube playlist URL
-const inputUrls = [
-	"https://www.youtube.com/watch?v=2bKB_oe9wmA",
-	"https://www.youtube.com/watch?v=mJ_zobQC9fY"
-];
+const inputUrls = ["https://www.youtube.com/shorts/HiGt6wO8WxI"];
 
 ffmpeg.setFfmpegPath(ffmpegStatic);
 
-const downloadAudio = async (url) => {
+const downloadMedia = async (url, mediaType) => {
 	try {
 		const info = await ytdl.getInfo(url);
-		const audioFormat = ytdl.chooseFormat(info.formats, {
-			filter: "audioonly",
-			quality: "highestaudio"
-		});
+		let format;
+		let extension;
+
+		if (mediaType === "audio") {
+			format = ytdl.chooseFormat(info.formats, {
+				filter: "audioonly",
+				quality: "highestaudio"
+			});
+			extension = "mp3";
+		} else if (mediaType === "video") {
+			format = ytdl.chooseFormat(info.formats, {
+				filter: "videoonly",
+				quality: "highestvideo"
+			});
+			extension = format.container;
+		} else {
+			throw new Error(
+				"Invalid media type specified. Must be 'audio' or 'video'."
+			);
+		}
+
 		const videoTitle = info.videoDetails.title;
 		const sanitizedTitle = videoTitle.replace(/[<>:"/\\|?*]+/g, "-"); // Remove illegal characters for filenames
-		const outputFilename = `${sanitizedTitle}.mp3`;
+		const outputFilename = `${sanitizedTitle}.${extension}`;
 
 		return new Promise((resolve, reject) => {
 			ffmpeg()
-				.input(audioFormat.url)
-				.format("mp3")
+				.input(format.url)
+				.format(extension)
 				.output(outputFilename)
 				.on("end", () => {
-					console.log(`Audio saved as ${outputFilename}`);
+					console.log(`Media saved as ${outputFilename}`);
 					resolve();
 				})
 				.on("error", (error) => {
@@ -44,6 +58,19 @@ const downloadAudio = async (url) => {
 
 (async () => {
 	for (const url of inputUrls) {
-		await downloadAudio(url);
+		const readline = require("readline");
+		const rl = readline.createInterface({
+			input: process.stdin,
+			output: process.stdout
+		});
+
+		rl.question(
+			"Enter 'audio' or 'video' to choose the media type to download: ",
+			async (mediaType) => {
+				rl.close();
+
+				await downloadMedia(url, mediaType);
+			}
+		);
 	}
 })();
