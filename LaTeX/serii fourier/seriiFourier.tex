@@ -1,52 +1,60 @@
 \documentclass{article}
 \usepackage{amsmath}
 \usepackage{array}
+\usepackage{tabularx}
 
 \begin{document}
 \setlength{\extrarowheight}{10pt}
 
 \begin{table}[!ht]
-\begin{minipage}{0.5\linewidth}
-\centering
-\begin{tabular}{|m{1cm}|m{7cm}|}
-\hline
-\textbf{Nr.} & \textbf{Formula} \\
-\hline
-& \textbf{Dezvoltare in Serie Fourier} \\
-\hline
-1. & $ f(x) = \dfrac{a_0}{2} +\displaystyle\sum\limits_{n = 1}^{\infty} \left(a_n \cos nx + b_n \sin nx\right)  $\\
-\hline
-& \textbf{Serii cu $\pi$} \\
-\hline
-2. & $ a_0 = \dfrac{1}{\pi} \displaystyle\int\limits_{-\pi}^{\pi} f(x) \,dx $ \\
-\hline
-3. & $ a_n = \dfrac{1}{\pi} \displaystyle\int\limits_{-\pi}^{\pi} f(x) \cos nx \,dx $ \\
-\hline
-4. & $ b_n = \dfrac{1}{\pi} \displaystyle\int\limits_{-\pi}^{\pi} f(x) \sin nx \,dx $ \\
-\hline
-5. & $ \displaystyle\int\limits_{-a}^{a} f(x) \,dx =
-\begin{cases}
-    2\displaystyle\int\limits_{0}^{a} f(x) \,dx \Rightarrow \text{f(x) - para}, \\
-    0 \Rightarrow \text{f(x)  impara}. \\
-\end{cases}
-$ \\
-\hline
-6. & $ \sin n\pi = 0 $ \\
-\hline
-7. & $ \cos n\pi = -1 $ \\
-\hline
-8. & $ f(x) = \dfrac{a_0}{2} + \displaystyle\sum\limits_{n = 1}^{\infty} \left(a_n \cos \dfrac{n\pi x}{l} + b_n \sin \dfrac{n\pi x}{l}\right) $ \\
-\hline 
-& \textbf{Serii cu $l$} \\
-\hline
-9. & $ a_0 = \dfrac{1}{l} \displaystyle\int\limits_{-l}^{l} f(x) \,dx$ \\
-\hline
-10. & $ a_n = -\dfrac{1}{l} \displaystyle\int\limits_{-l}^{l} f(x) \cos \dfrac{n\pi x}{l} \,dx$ \\
-\hline
-11. & $ b_n = \dfrac{1}{l} \displaystyle\int\limits_{-l}^{l} f(x) \sin \dfrac{n\pi x}{l} \,dx$ \\
-\hline
-\end{tabular}
-\end{minipage}
+    \begin{minipage}{0.5\linewidth}
+        \centering
+        \begin{tabularx}{\linewidth}{|c|X|}
+            \hline
+            \textbf{Nr.} & \textbf{Formula}                                                                                                                           \\
+            \hline
+                         & \textbf{Dezvoltare in Serie Fourier}                                                                                                       \\
+            \hline
+            1.           & $ f(x) = \dfrac{a_0}{2} +\displaystyle\sum\limits_{n = 1}^{\infty} \left(a_n \cos nx + b_n \sin nx\right)  $                               \\
+            \hline
+                         & \textbf{Serii cu $\pi$}                                                                                                                    \\
+            \hline
+            2.           & $ a_0 = \dfrac{1}{\pi} \displaystyle\int\limits_{-\pi}^{\pi} f(x) \,dx $                                                                   \\
+            \hline
+            3.           & $ a_n = \dfrac{1}{\pi} \displaystyle\int\limits_{-\pi}^{\pi} f(x) \cos nx \,dx $                                                           \\
+            \hline
+            4.           & $ b_n = \dfrac{1}{\pi} \displaystyle\int\limits_{-\pi}^{\pi} f(x) \sin nx \,dx $                                                           \\
+            \hline
+            5.           & $ \displaystyle\int\limits_{-a}^{a} f(x) \,dx =
+                \begin{cases}
+                    2\displaystyle\int\limits_{0}^{a} f(x) \,dx \Rightarrow \text{f(x) - para}, \\
+                    0 \Rightarrow \text{f(x)  impara}.                                          \\
+                \end{cases}
+            $                                                                                                                                                         \\
+            \hline
+            6.           & $ \sin n\pi = 0 $                                                                                                                          \\
+            \hline
+            7.           & $ \cos n\pi = -1 $                                                                                                                         \\
+            \hline
+            8.           & $ f(x) = \dfrac{a_0}{2} + \displaystyle\sum\limits_{n = 1}^{\infty} \left(a_n \cos \dfrac{n\pi x}{l} + b_n \sin \dfrac{n\pi x}{l}\right) $ \\
+            \hline
+                         & \textbf{Serii cu $l$}                                                                                                                      \\
+            \hline
+            9.           & $ a_0 = \dfrac{1}{l} \displaystyle\int\limits_{-l}^{l} f(x) \,dx$                                                                          \\
+            \hline
+            10.          & $ a_n = -\dfrac{1}{l} \displaystyle\int\limits_{-l}^{l} f(x) \cos \dfrac{n\pi x}{l} \,dx$                                                  \\
+            \hline
+            11.          & $ b_n = \dfrac{1}{l} \displaystyle\int\limits_{-l}^{l} f(x) \sin \dfrac{n\pi x}{l} \,dx$                                                   \\
+            \hline
+                         & \text{Prelungire serie para / de $\cos$}                                                                                                   \\
+            \hline
+            12.          & $ x \in [-l; 0]; f(x) = f(-x) $                                                                                                            \\
+            \hline
+            13.          & $ f(x) = \begin{cases}
+                                            f(-x), x \in -l; 0
+                                        \end{cases} $                                                                                                                 \\
+        \end{tabularx}
+    \end{minipage}
 \end{table}
 
 \end{document}
