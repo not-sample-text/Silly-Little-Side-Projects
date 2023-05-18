@@ -12,35 +12,62 @@ Trans. Laplace are forma: $\displaystyle\int\limits_{a}^{b} N(p, t) f(t)\,dt$, u
 \begin{minipage}{\dimexpr\textwidth+2cm}
   \begin{tabular}{|c|c|c|}
     \hline
-    \textbf{Nr.} & \textbf{f(t)}                  & \textbf{F(p)} \\
+    \textbf{Nr.} & \textbf{f(t)}                  & \textbf{F(p)}                          \\
     \hline
-    1.           & $ 1 $                          & $  $          \\
+    1.           & $ 1 $                          & $ \dfrac{1}{p} $                       \\
     \hline
-    2.           & $ t $                          & $  $          \\
+    2.           & $ t $                          & $ \dfrac{1}{p^2} $                     \\
     \hline
-    3.           & $ t^n $                        & $  $          \\
+    3.           & $ t^n $                        & $ \dfrac{n!}{p^{n+1}} $                \\
     \hline
-    4.           & $ e^t $                        & $  $          \\
+    4.           & $ e^t $                        & $ \dfrac{1}{p-1} $                     \\
     \hline
-    5.           & $ \sin t $                     & $  $          \\
+    5.           & $ \sin t $                     & $ \dfrac{1}{p^2+1} $                   \\
     \hline
-    6.           & $ \cos t $                     & $  $          \\
+    6.           & $ \cos t $                     & $ \dfrac{1}{p^2+1} $                   \\
     \hline
-    7.           & $ e^{at} $                     & $  $          \\
+    7.           & $ e^{at} $                     & $ \dfrac{1}{p-a} $                     \\
     \hline
-    8.           & $ \sin at $                    & $  $          \\
+    8.           & $ \sin at $                    & $ \dfrac{a}{p^2+a^2}  $                \\
     \hline
-    9.           & $ \cos at $                    & $  $          \\
+    9.           & $ \cos at $                    & $ \dfrac{p}{p^2+a^2} $                 \\
     \hline
-    10.          & $ e^{\alpha t} \sin \alpha t $ & $  $          \\
+    10.          & $ e^{\alpha t} \sin \alpha t $ & $ \dfrac{a}{(p-\alpha)^2+a^2} $        \\
     \hline
-    11.          & $ e^{\alpha t} \cos \alpha t $ & $  $          \\
+    11.          & $ e^{\alpha t} \cos \alpha t $ & $ \dfrac{p-\alpha}{(p-\alpha)^2+a^2} $ \\
     \hline
-    12.          & $ \text{sh}\ t $               & $  $          \\
+    12.          & $ \text{sh}\ t $               & $ \dfrac{a}{p^2-a^2} $                 \\
     \hline
-    13.          & $ \text{ch}\ t $               & $  $          \\
+    13.          & $ \text{ch}\ t $               & $ \dfrac{p}{p^2-a^2} $                 \\
     \hline
   \end{tabular}
+  \begin{tabular}{|c|}
+    \hline
+    \textbf{Teor. Asemanarii}                                \\
+    \hline
+    $ L\{f(at)\} = \dfrac{1}{a} F\left(\dfrac{p}{a}\right) $ \\
+    \hline
+  \end{tabular}
+
+  \begin{tabular}{|c|}
+    \hline
+    \textbf{Teor. Deplasarii}                \\
+    \hline
+    $ L\{e^{\alpha t} f(t)\} = F(p-\alpha) $ \\
+    \hline
+  \end{tabular}
+  \begin{tabular}{|c|}
+    \hline
+    \textbf{Trans. Laplace a deriv. f(t)}                                                \\
+    \hline
+    $ L\{f'(t)\} = pF(p) - f(0) $                                                        \\
+    \hline
+    $  L\{f''(t)\} = p^2F(p) - pf(0) - f'(0) $                                           \\
+    \hline
+    $  L\{f^{(n)}(t)\} = p^nF(p) - p^{n-1}f(0) - p^{n-2}f''(0) - \cdots - f^{(n-1)}(0) $ \\
+    \hline
+  \end{tabular}
+
 
 \end{minipage}
 
