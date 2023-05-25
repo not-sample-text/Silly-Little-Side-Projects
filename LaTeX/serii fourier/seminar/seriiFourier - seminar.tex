@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\begin{document}
+$ f:[0; l] \rightarrow \mathbb{R} \begin{cases}
+    sin, \\
+    cos. \\
+  \end{cases} $
+
+\begin{tabular}{|c|c|}
+  \hline
+  $sin$ & $ a_0 = a_n = 0 $                                                                       \\
+
+        & $ b_n = \dfrac{2}{l} \displaystyle\int\limits_{0}^{l} f(x) \sin \dfrac{n\pi x}{l}\,dx $ \\
+
+        & $ f(x) = \begin{cases}
+                       -f(x), x \in [-l; 0)          \\
+                       \ f(x), x \in (0; l],\ T = 2l \\
+                     \end{cases}$                                                  \\
+        & $ \text{fct. impare} \Rightarrow f(-x) = -f(x)$                                         \\
+  \hline
+  $cos$ & $ b_n = 0 $                                                                             \\
+        & $ a_0 = \dfrac{2}{l} \displaystyle\int\limits_{0}^{l} f(x)\,dx $                        \\
+        & $ a_n = \dfrac{2}{l} \displaystyle\int\limits_{0}^{l} f(x) \cos \dfrac{n\pi x}{l}\,dx $ \\
+        & $ f(x) = \begin{cases}
+                       f(-x),\ x \in [-l; 0) \\
+                       f(-x),\ x \in [0; l]
+                     \end{cases}$                                                          \\
+        & $ \text{fct. pare} \Rightarrow f(-x) = f(x)$                                            \\
+  \hline
+\end{tabular}
+
+\end{document}
