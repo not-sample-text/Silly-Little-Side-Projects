@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\begin{document}
+\begin{tabular}{l}
+  $P:\Omega \rightarrow [0; 1]$                                                                              \\
+  $P(\Omega) = 1$                                                                                            \\
+  $P(\oslash) = 0$                                                                                           \\
+  $P(A) = \sum\limits_{i = 1}^{n} P(A_i) \times P(A|A_i)$                                                    \\
+  $P(\bar{A})  = 1 - P(A)$                                                                                   \\
+  $P(A \cup B)  = P(A) + P(B),\ A \cap B = \oslash$                                                          \\
+  $P(A \cup B)  = P(A) + P(B) - P(A \cap B)$                                                                 \\
+  $P(A \cap B) = P(A) \times P(B),\ A \cap B = \oslash$                                                      \\
+  $P(A|B) = P_B(A) = \dfrac{P(A \cap B)}{P(B)}$                                                              \\
+  $ A_i \cap A_j = \oslash,\ ( \forall ) i, j \in \mathbb{N},\ i\neq j  $                                    \\
+  $\underset{i=1}{\overset{n}{U}} A_i = \Omega$                                                              \\
+  Formula Bayes: $P(A_i|A) = \dfrac{P(A_i) \times P(A|A_i)}{\sum\limits_{i = 1}^{n} P(A_i) \times P(A|A_i)}$ \\
+\end{tabular}
+\end{document}
