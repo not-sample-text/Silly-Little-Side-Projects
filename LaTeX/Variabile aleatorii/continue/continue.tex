@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\begin{document}
+\textbf{Variabile continue}\\
+Formule:\\\\
+\begin{tabular}{rcl}
+  Fct.\ densitate de probabilitate & : & $ \rho: \mathbb{R}\rightarrow\mathbb{R}$    \\
+  Fct.\ de repartitie              & : & $ \int\limits_{-\infty}^x \rho(t)\,dt$      \\
+  $M(X)$                           & : & $ \int\limits_{\mathbb{R}} x \rho(x)\,dx$   \\
+  $M(X^k)$                         & : & $ \int\limits_{\mathbb{R}} x^k \rho(x)\,dx$ \\
+  Dispersia                        & : & $ M(X^2) - [M(X)]^2$                        \\
+\end{tabular}\\
+Repartitia Binomiala:
+\begin{align*}
+  X:\begin{pmatrix}
+      k       \\
+      P(n, k) \\
+    \end{pmatrix}_{k\in\ \text{0, n}}
+          &                                                                                   \\
+  P(n, k) & = C_n^k \times p^k \times q^{n-k}                                                 \\
+  M(X)    & = \sum\limits_{k = 0}^n k \times P(n, k)                                          \\
+          & = \sum\limits_{k = 1}^n k \times C_n^k \times p^k \times q^{n-k}                  \\
+          & = \sum\limits_{k = 1}^n k\times\dfrac{n!}{k!(n-k)!}\times p^k \times q^{n-k}      \\
+          & = np                                                                              \\
+  D^2(X)  & = \sum\limits_{k = 0}^n k^2 \times C_n^k \times p^k \times q^{n-k} - (np)^2 = npq \\
+\end{align*}
+\end{document}
