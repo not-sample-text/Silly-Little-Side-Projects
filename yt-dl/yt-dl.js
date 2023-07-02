@@ -4,7 +4,7 @@ const ffmpegStatic = require("ffmpeg-static");
 const fs = require("fs");
 
 // List of YouTube video URLs or YouTube playlist URL
-const inputUrls = ["https://www.youtube.com/shorts/HiGt6wO8WxI"];
+const inputUrls = ["https://www.youtube.com/shorts/bZwDCjYPP7A"];
 
 ffmpeg.setFfmpegPath(ffmpegStatic);
 
