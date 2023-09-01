@@ -10,7 +10,7 @@ export async function getWeather(lat, lon) {
 
 		let weatherImagePath = getWeatherImagePath(data.weather[0].id);
 		let clothingImagePath = getClothingImagePath(data.main.temp);
-		let temperature = `${data.main.temp}C`;
+		let temperature = `${Math.floor(data.main.temp)}C`;
 
 		// Update the weather image
 		document.getElementById("weather-image").src = weatherImagePath;

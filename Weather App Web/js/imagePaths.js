@@ -15,7 +15,7 @@ export function getWeatherImagePath(id) {
 export function getClothingImagePath(temp) {
 	if (temp >= 25) return "../assets/clothes/underwear.png";
 	if (temp >= 20 && temp < 25) return "../assets/clothes/t-shirt.png";
-	if (temp >= 5 && temp < 15) return "../assets/clothes/coat-light.png";
+	if (temp >= 5 && temp < 20) return "../assets/clothes/coat-light.png";
 	if (temp >= -5 && temp < 5) return "../assets/clothes/coat-med.png";
 	if (temp < -5) return "../assets/clothes/coat-heavy.png";
 }
