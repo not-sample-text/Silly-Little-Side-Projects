@@ -1,0 +1,39 @@
+temp taken from gps location + openweathermap api
+
+ranges for clothes based on temp:
+  Winter jacket: >= -5            -- assets/clothes/coat-heavy.png
+  Light to medium coat: -5 -- 5   -- assets/clothes/coat-med.png
+  Fleece: 5 -- 15                 -- assets/clothes/coat-light.png
+  Short sleeves: 20 -- 24         -- assets/clothes/t-shirt.png
+  Shorts: 25 <=                   -- assets/clothes/underwear.png
+
+
+api call:
+  https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}
+
+what i need:
+  data.weather[0].id
+  data.main.temp
+
+
+weather ids:
+  200 - 232 -- Thunderstorm  img: assets/weather-types/200.png
+
+  300 - 321 -- Drizzle       img: assets/weather-types/300.png
+
+  500 - 531 -- Rain          img: assets/weather-types/500.png
+                             img: assets/weather-types/501.png
+                             img: assets/weather-types/502.png
+                             img: assets/weather-types/503.png
+                             img: assets/weather-types/504.png
+
+  600 - 622 -- Snow          img: assets/weather-types/600.png
+                             img: assets/weather-types/601.png
+                             img: assets/weather-types/611.png
+
+  700 - 781 -- Atmosphere    img: assets/weather-types/700.png
+
+  800       -- Clear         img: assets/weather-types/800.png
+  801 - 804 -- Clouds        img: assets/weather-types/801.png
+                             img: assets/weather-types/802.png
+                             img: assets/weather-types/803.png
