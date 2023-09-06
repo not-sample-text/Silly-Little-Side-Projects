@@ -8,7 +8,7 @@ export function getWeatherImagePath(id) {
 	if (id >= 601 && id <= 622) return "../assets/weather-types/601.png";
 	if (id >= 700 && id <= 781) return "../assets/weather-types/700.png";
 	if (id === 800) return "../assets/weather-types/800.png";
-	if (id >= 801 && id <= 802) return "../assets/weather-types/801.png";
+	if (id >= 801 && id <= 802) return "../assets/weather-types/802.png";
 	if (id >= 803 && id <= 804) return "../assets/weather-types/803.png";
 }
 
