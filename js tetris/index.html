@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" />
+  <script src="constants.js" defer></script>
+  <script src="board.js" defer></script>
+  <script src="piece.js" defer></script>
+  <script src="main.js" defer></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="game">
+    <canvas id="board"></canvas>
+    <div class="game-content">
+      <div class="next-block"></div>
+      <div class="score">
+        <p>HighScore: <span id="high"></span></p>
+        <p>Score: <span id="score"></span></p>
+        <p>Lines: <span id="lines"></span></p>
+        <p>Level: <span id="level"></span></p>
+      </div>
+      <div class="controls">
+        <p>Move block left / right: <span>&larr;</span> / <span>&rarr;</span></p>
+        <p>Soft drop block: <span>&darr;</span></p>
+        <p>Rotate block: <span>&uarr;</span></p>
+        <p>Hard drop block: Spacebar</p>
+      </div>
+      <button class="play">Play</button>
+    </div>
+  </div>
+
+</body>
+
+</html>
