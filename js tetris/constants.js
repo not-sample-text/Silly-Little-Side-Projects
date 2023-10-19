@@ -1,3 +1,3 @@
 // board constants
-const WIDTH = 10,
-	HEIGHT = 20;
+const ROWS = 20;
+const COLUMNS = 10;
