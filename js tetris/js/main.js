@@ -1,5 +1,5 @@
 // Define the Tetris block arrays
-// const blocks = [i_block, j_block, l_block, o_block, s_block, t_block, z_block];
+const blocks = [i_block, j_block, l_block, o_block, s_block, t_block, z_block];
 
 // Define the position of the top-left corner of the active block
 const middleColumn = Math.floor(COLUMNS / 2);
@@ -50,9 +50,3 @@ function moveDown() {
 		clearInterval(intervalId);
 	}
 }
-
-// Example usage: choose a random block to make active and move it down every half second
-activeBlockType = blocks[Math.floor(Math.random() * blocks.length)];
-updateTable();
-console.table(table);
-const intervalId = setInterval(moveDown, 500);
