@@ -1,4 +1,3 @@
-// block consants
 // I
 const i_block = [[1, 1, 1, 1]];
 // J
@@ -35,11 +34,11 @@ const t_block = [
 //colors
 const colors = {
 	0: "transparent", // Empty square
-	1: "cyan", // I block
-	2: "blue", // J block
-	3: "orange", // L block
-	4: "yellow", // O block
-	5: "green", // S block
-	6: "red", // Z block
-	7: "purple" // T block
+	1: "rgb(6 182 212)", // I block
+	2: "rgb(59 130 246)", // J block
+	3: "rgb(249 115 22)", // L block
+	4: "rgb(234 179 8)", // O block
+	5: "rgb(34 197 94)", // S block
+	6: "rgb(239 68 68)", // Z block
+	7: "rgb(139 92 246)" // T block
 };

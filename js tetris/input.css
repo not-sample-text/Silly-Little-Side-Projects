@@ -15,8 +15,6 @@ div.game {
 }
 
 canvas {
-	height: 500px;
-	aspect-ratio: 1/2;
 	@apply border-2 border-stone-400;
 }
 
@@ -48,4 +46,39 @@ button.play {
 div.game-content,
 button.play {
 	font-family: "Press Start 2P", cursive;
+}
+
+div.colors {
+	@apply flex gap-5 mt-2;
+}
+
+div.color {
+	@apply w-[25px] h-[25px];
+}
+
+div.color:nth-child(1) {
+	@apply bg-cyan-500;
+}
+div.color:nth-child(2) {
+	@apply bg-blue-500;
+}
+
+div.color:nth-child(3) {
+	@apply bg-orange-500;
+}
+
+div.color:nth-child(4) {
+	@apply bg-yellow-500;
+}
+
+div.color:nth-child(5) {
+	@apply bg-green-500;
+}
+
+div.color:nth-child(6) {
+	@apply bg-red-500;
+}
+
+div.color:nth-child(7) {
+	@apply bg-violet-500;
 }

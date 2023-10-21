@@ -555,8 +555,6 @@ div.game {
 }
 
 canvas {
-  height: 500px;
-  aspect-ratio: 1/2;
   border-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(168 162 158 / var(--tw-border-opacity));
@@ -612,4 +610,50 @@ button.play {
 div.game-content,
 button.play {
   font-family: "Press Start 2P", cursive;
+}
+
+div.colors {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1.25rem;
+}
+
+div.color {
+  height: 25px;
+  width: 25px;
+}
+
+div.color:nth-child(1) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(6 182 212 / var(--tw-bg-opacity));
+}
+
+div.color:nth-child(2) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+
+div.color:nth-child(3) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 115 22 / var(--tw-bg-opacity));
+}
+
+div.color:nth-child(4) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 179 8 / var(--tw-bg-opacity));
+}
+
+div.color:nth-child(5) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+
+div.color:nth-child(6) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
+div.color:nth-child(7) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(139 92 246 / var(--tw-bg-opacity));
 }

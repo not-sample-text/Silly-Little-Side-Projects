@@ -1,3 +1,4 @@
-// board constants
+// Define constants
 const ROWS = 20;
-const COLUMNS = 10;
+const COLS = 10;
+const BLOCK_SIZE = 25;
