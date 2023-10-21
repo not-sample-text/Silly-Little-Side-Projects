@@ -8,6 +8,10 @@
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" />
   <script src="js/constants.js" defer></script>
   <script src="js/piece.js" defer></script>
+  <script src="js/board.js" defer></script>
+  <script src="js/moveLogic.js" defer></script>
+  <script src="js/fallLogic.js" defer></script>
+  <script src="js/nextBlock.js" defer></script>
   <script src="js/main.js" defer></script>
   <title>Document</title>
 </head>
@@ -16,7 +20,7 @@
   <div class="game">
     <canvas id="board"></canvas>
     <div class="game-content">
-      <div class="next-block"></div>
+      <canvas id="next-block"></canvas>
       <div class="score">
         <p>HighScore: <span id="high"></span></p>
         <p>Score: <span id="score"></span></p>
@@ -29,19 +33,8 @@
         <p>Rotate block: <span>&uarr;</span></p>
         <p>Hard drop block: Spacebar</p>
       </div>
-      <button class="play">Play</button>
+      <button class="play" id="start">Play</button>
     </div>
-  </div>
-
-  <div class="colors">
-    <div class="color"></div>
-    <div class="color"></div>
-    <div class="color"></div>
-    <div class="color"></div>
-    <div class="color"></div>
-    <div class="color"></div>
-    <div class="color"></div>
-    <div class="color"></div>
   </div>
 
 </body>

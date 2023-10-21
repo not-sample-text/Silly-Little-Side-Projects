@@ -31,6 +31,21 @@ const t_block = [
 	[7, 7, 7]
 ];
 
+// Define a function to get a random shape
+function getRandomShape() {
+	const shapes = [
+		i_block,
+		j_block,
+		l_block,
+		o_block,
+		s_block,
+		z_block,
+		t_block
+	];
+	const randomIndex = Math.floor(Math.random() * shapes.length);
+	return shapes[randomIndex];
+}
+
 //colors
 const colors = {
 	0: "transparent", // Empty square

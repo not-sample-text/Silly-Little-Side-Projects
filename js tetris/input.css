@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-	/* outline: 1px lime solid; */
+	outline: 1px lime solid;
 }
 
 body {
@@ -15,15 +15,16 @@ div.game {
 }
 
 canvas {
-	@apply border-2 border-stone-400;
+	@apply border-2 border-stone-400 p-1;
+}
+
+canvas#next-block {
+	width: 150px;
+	aspect-ratio: 3/2;
 }
 
 div.game-content {
 	@apply flex flex-col justify-between text-white;
-}
-
-div.next-block {
-	@apply w-20 h-20 border-2 border-stone-400;
 }
 
 div.score,
@@ -46,39 +47,4 @@ button.play {
 div.game-content,
 button.play {
 	font-family: "Press Start 2P", cursive;
-}
-
-div.colors {
-	@apply flex gap-5 mt-2;
-}
-
-div.color {
-	@apply w-[25px] h-[25px];
-}
-
-div.color:nth-child(1) {
-	@apply bg-cyan-500;
-}
-div.color:nth-child(2) {
-	@apply bg-blue-500;
-}
-
-div.color:nth-child(3) {
-	@apply bg-orange-500;
-}
-
-div.color:nth-child(4) {
-	@apply bg-yellow-500;
-}
-
-div.color:nth-child(5) {
-	@apply bg-green-500;
-}
-
-div.color:nth-child(6) {
-	@apply bg-red-500;
-}
-
-div.color:nth-child(7) {
-	@apply bg-violet-500;
 }
