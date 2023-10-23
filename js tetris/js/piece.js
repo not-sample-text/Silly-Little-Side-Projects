@@ -32,19 +32,33 @@ const t_block = [
 ];
 
 // Define a function to get a random shape
+let lastRandomShape = null;
+
 function getRandomShape() {
-	const shapes = [
-		i_block,
-		j_block,
-		l_block,
-		o_block,
-		s_block,
-		z_block,
-		t_block
-	];
-	const randomIndex = Math.floor(Math.random() * shapes.length);
-	return shapes[randomIndex];
+	let newRandomShape;
+
+	// Continue generating a new shape until it's different from the last one
+	do {
+		const shapes = [
+			i_block,
+			j_block,
+			l_block,
+			o_block,
+			s_block,
+			z_block,
+			t_block
+		];
+		const randomIndex = Math.floor(Math.random() * shapes.length);
+		newRandomShape = shapes[randomIndex];
+	} while (JSON.stringify(newRandomShape) === JSON.stringify(lastRandomShape));
+
+	// Update lastRandomShape
+	lastRandomShape = newRandomShape;
+
+	return newRandomShape;
 }
+
+let randomShape = getRandomShape();
 
 //colors
 const colors = {

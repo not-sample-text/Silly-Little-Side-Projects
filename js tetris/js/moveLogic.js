@@ -1,94 +1,96 @@
-let canMoveLeft = true;
-let canMoveRight = true;
-let softDropInterval; // Variable to store the softDrop interval
+let lockYPosition = false; // Flag to track if Y position is locked
 
-function moveRight() {
-	event.preventDefault();
-	if (!canMoveRight) return;
-	clearCanvas();
-	xOffset++;
-	drawShape(randomShape, xOffset, yOffset);
-	const direction = hasReachedBoundary(randomShape, xOffset);
-	if (direction === "left") {
-		canMoveRight = false;
+function movePiece(direction) {
+	const deltaX = direction === "left" ? -1 : direction === "right" ? 1 : 0;
+	const deltaY = direction === "down" ? 1 : 0;
+
+	if (direction === "left" && canMoveLeft()) {
+		clearBlock();
+		xOffset += deltaX;
+		drawBlock();
+	} else if (direction === "right" && canMoveRight()) {
+		clearBlock();
+		xOffset += deltaX;
+		drawBlock();
+	} else if (direction === "down" && canMoveDown()) {
+		clearBlock();
+		yOffset += deltaY;
+		drawBlock();
 	}
-	canMoveLeft = true;
+
+	if (direction === "down" && !canMoveDown()) {
+		lockYPosition = true; // Lock the Y position when a collision occurs
+		setTimeout(() => {
+			lockYPosition = false; // Unlock the Y position after the same interval as the fall interval
+		}, fallSpeed);
+	}
 }
 
-function moveLeft() {
-	event.preventDefault();
-	if (!canMoveLeft) return;
-	clearCanvas();
-	xOffset--;
-	drawShape(randomShape, xOffset, yOffset);
-	const direction = hasReachedBoundary(randomShape, xOffset);
-	if (direction === "right") {
-		canMoveLeft = false;
-	}
-	canMoveRight = true;
-}
-
-function softDrop() {
-	if (softDropInterval) {
-		clearInterval(softDropInterval); // Clear the existing interval
-	}
-
-	softDropInterval = setInterval(() => {
-		if (lockYPosition) {
-			// Block's Y position is locked, stop further movement
-			clearInterval(softDropInterval);
-			return;
+function canMoveLeft() {
+	// Check if the game piece can move left
+	for (let row = 0; row < randomShape.length; row++) {
+		for (let col = 0; col < randomShape[row].length; col++) {
+			if (randomShape[row][col] !== 0) {
+				const newX = xOffset + col - 1;
+				if (newX < 0 || arr[yOffset + row][newX] !== 0) {
+					return false; // Collision detected
+				}
+			}
 		}
+	}
+	return true; // No collision
+}
 
-		yOffset++;
-		clearCanvas();
-		drawShape(randomShape, xOffset, yOffset);
-
-		if (reachedBottom()) {
-			console.log("reached bottom");
-			lockYPosition = true; // Lock the Y position when it reaches the bottom
-			clearInterval(softDropInterval); // Clear the interval
-			setTimeout(() => {
-				lockYPosition = false; // Unlock the Y position after a delay
-				softDrop(); // Restart softDrop to continue moving horizontally
-			}, fallSpeed);
+function canMoveRight() {
+	// Check if the game piece can move right
+	for (let row = 0; row < randomShape.length; row++) {
+		for (let col = 0; col < randomShape[row].length; col++) {
+			if (randomShape[row][col] !== 0) {
+				const newX = xOffset + col + 1;
+				if (newX >= COLS || arr[yOffset + row][newX] !== 0) {
+					return false; // Collision detected
+				}
+			}
 		}
-	}, 50); // Adjust the speed for the softDrop
+	}
+	return true; // No collision
 }
 
-function hasReachedBoundary(randomShape, xOffset) {
-	if (xOffset < 1) {
-		return "right";
+function canMoveDown() {
+	// Check if the game piece can move down
+	for (let row = 0; row < randomShape.length; row++) {
+		for (let col = 0; col < randomShape[row].length; col++) {
+			if (randomShape[row][col] !== 0) {
+				const newY = yOffset + row + 1;
+				if (newY >= ROWS || arr[newY][xOffset + col] !== 0) {
+					return false; // Collision detected
+				}
+			}
+		}
 	}
-	if (xOffset + randomShape[0].length > COLS - 1) {
-		return "left";
-	}
-	return "none";
+	return true; // No collision
 }
 
-// Add an event listener to trigger the left movement
+// Updated event listener
 document.addEventListener("keydown", (event) => {
-	if (event.key === "ArrowLeft" || event.key === "a") {
-		moveLeft();
-	}
-});
-
-// Add an event listener to trigger the right movement
-document.addEventListener("keydown", (event) => {
-	if (event.key === "ArrowRight" || event.key === "d") {
-		moveRight();
-	}
-});
-
-// Add an event listener to trigger the soft drop and clear the interval when the key is released
-document.addEventListener("keydown", (event) => {
-	if (event.key === "ArrowDown" || event.key === "s") {
-		softDrop();
-	}
-});
-
-document.addEventListener("keyup", (event) => {
-	if (event.key === "ArrowDown" || event.key === "s") {
-		clearInterval(softDropInterval);
+	switch (event.key) {
+		case "ArrowLeft":
+		case "a":
+			movePiece("left");
+			break;
+		case "ArrowRight":
+		case "d":
+			movePiece("right");
+			break;
+		case "ArrowDown":
+		case "s":
+			movePiece("down");
+			break;
+		case "ArrowUp":
+		case "w":
+			randomShape = rotateClockwise(randomShape);
+			clearBlock();
+			drawBlock();
+			break;
 	}
 });
