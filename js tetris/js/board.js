@@ -5,7 +5,7 @@ const play_button = document.getElementById("start");
 // Create the game board array and initialize it
 let arr = new Array(ROWS).fill().map(() => new Array(COLS).fill(0));
 
-// Create a function to draw a block on the canvas
+// Modify the drawBlock function to accept x and y coordinates
 function drawBlock(x, y, color, ctx) {
 	const blockSize = BLOCK_SIZE;
 	ctx.fillStyle = color;
@@ -17,8 +17,8 @@ function drawShape(shape, xOffset, yOffset) {
 	shape.forEach((row, i) => {
 		row.forEach((block, j) => {
 			if (block !== 0) {
-				const x = j + xOffset;
-				const y = i + yOffset;
+				const x = xOffset + j;
+				const y = yOffset + i;
 				const color = colors[block];
 				drawBlock(x, y, color, ctx);
 			}
@@ -26,10 +26,22 @@ function drawShape(shape, xOffset, yOffset) {
 	});
 }
 
-// Create a function to clear a block on the canvas
+// Modify the clearBlock function to accept x and y coordinates
 function clearBlock(x, y, ctx) {
 	const blockSize = BLOCK_SIZE;
 	ctx.clearRect(x * blockSize, y * blockSize, blockSize, blockSize);
+}
+
+function clearShape(shape, xOffset, yOffset) {
+	shape.forEach((row, i) => {
+		row.forEach((block, j) => {
+			if (block !== 0) {
+				const x = xOffset + j;
+				const y = yOffset + i;
+				clearBlock(x, y, ctx);
+			}
+		});
+	});
 }
 
 // Create a function to clear the canvas
