@@ -1,27 +1,69 @@
+let canMoveLeft = true;
+let canMoveRight = true;
+let softDropInterval; // Variable to store the softDrop interval
+
 function moveRight() {
 	event.preventDefault();
-	// Clear the canvas before rendering the new shape
+	if (!canMoveRight) return;
 	clearCanvas();
 	xOffset++;
 	drawShape(randomShape, xOffset, yOffset);
 	const direction = hasReachedBoundary(randomShape, xOffset);
 	if (direction === "left") {
-		// If the block has reached the right boundary, move it to the left
-		xOffset -= 2;
+		canMoveRight = false;
 	}
+	canMoveLeft = true;
 }
 
 function moveLeft() {
 	event.preventDefault();
-	// Clear the canvas before rendering the new shape
+	if (!canMoveLeft) return;
 	clearCanvas();
 	xOffset--;
 	drawShape(randomShape, xOffset, yOffset);
 	const direction = hasReachedBoundary(randomShape, xOffset);
 	if (direction === "right") {
-		// If the block has reached the left boundary, move it to the right
-		xOffset += 2;
+		canMoveLeft = false;
 	}
+	canMoveRight = true;
+}
+
+function softDrop() {
+	if (softDropInterval) {
+		clearInterval(softDropInterval); // Clear the existing interval
+	}
+
+	softDropInterval = setInterval(() => {
+		if (lockYPosition) {
+			// Block's Y position is locked, stop further movement
+			clearInterval(softDropInterval);
+			return;
+		}
+
+		yOffset++;
+		clearCanvas();
+		drawShape(randomShape, xOffset, yOffset);
+
+		if (reachedBottom()) {
+			console.log("reached bottom");
+			lockYPosition = true; // Lock the Y position when it reaches the bottom
+			clearInterval(softDropInterval); // Clear the interval
+			setTimeout(() => {
+				lockYPosition = false; // Unlock the Y position after a delay
+				softDrop(); // Restart softDrop to continue moving horizontally
+			}, fallSpeed);
+		}
+	}, 50); // Adjust the speed for the softDrop
+}
+
+function hasReachedBoundary(randomShape, xOffset) {
+	if (xOffset < 1) {
+		return "right";
+	}
+	if (xOffset + randomShape[0].length > COLS - 1) {
+		return "left";
+	}
+	return "none";
 }
 
 // Add an event listener to trigger the left movement
@@ -38,16 +80,15 @@ document.addEventListener("keydown", (event) => {
 	}
 });
 
-function hasReachedBoundary(randomShape, xOffset) {
-	// Check if the shape has reached the left boundary
-	if (xOffset < 0) {
-		return "right";
+// Add an event listener to trigger the soft drop and clear the interval when the key is released
+document.addEventListener("keydown", (event) => {
+	if (event.key === "ArrowDown" || event.key === "s") {
+		softDrop();
 	}
+});
 
-	// Check if the shape has reached the right boundary
-	if (xOffset + randomShape[0].length > COLS) {
-		return "left";
+document.addEventListener("keyup", (event) => {
+	if (event.key === "ArrowDown" || event.key === "s") {
+		clearInterval(softDropInterval);
 	}
-
-	return "none";
-}
+});
