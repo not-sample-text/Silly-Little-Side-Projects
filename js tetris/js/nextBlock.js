@@ -1,5 +1,7 @@
-const maxBlockWidth = 3; // Number of columns
-const maxBlockHeight = 2; // Number of rows
+//nextBlock.js
+
+const maxBlockWidth = 4; // Adjust the number of columns for rotated blocks
+const maxBlockHeight = 4; // Adjust the number of rows for rotated blocks
 const scale = 25; // Scale factor
 
 // Define the "Next Block" canvas element and its context
@@ -19,15 +21,16 @@ function initializeNextBlockCanvas() {
 function drawNextBlock() {
 	nextBlockCtx.clearRect(0, 0, nextBlockCanvas.width, nextBlockCanvas.height);
 
-	randomShape.forEach((row, i) => {
-		row.forEach((block, j) => {
-			if (block !== 0) {
-				nextBlockCtx.fillStyle = colors[block];
+	for (let i = 0; i < randomShape.length; i++) {
+		for (let j = 0; j < randomShape[i].length; j++) {
+			if (randomShape[i][j] !== 0) {
+				nextBlockCtx.fillStyle = colors[randomShape[i][j]];
 				nextBlockCtx.fillRect(j * scale, i * scale, scale, scale);
 			}
-		});
-	});
+		}
+	}
 }
+
 // Function to generate and set the next random shape
 function setNextRandomShape() {
 	randomShape = getRandomShape(); // Generate the next random shape

@@ -1,3 +1,5 @@
+// board.js
+
 const canvas = document.getElementById("board");
 const ctx = canvas.getContext("2d");
 const play_button = document.getElementById("start");
@@ -14,34 +16,37 @@ function drawBlock(x, y, color, ctx) {
 
 // Create a function to draw a shape on the canvas
 function drawShape(shape, xOffset, yOffset) {
-	shape.forEach((row, i) => {
-		row.forEach((block, j) => {
-			if (block !== 0) {
+	for (let i = 0; i < shape.length; i++) {
+		for (let j = 0; j < shape[i].length; j++) {
+			if (shape[i][j] !== 0) {
 				const x = xOffset + j;
 				const y = yOffset + i;
-				const color = colors[block];
+				const color = colors[shape[i][j]];
 				drawBlock(x, y, color, ctx);
 			}
-		});
-	});
+		}
+	}
 }
 
-// Modify the clearBlock function to accept x and y coordinates
 function clearBlock(x, y, ctx) {
 	const blockSize = BLOCK_SIZE;
 	ctx.clearRect(x * blockSize, y * blockSize, blockSize, blockSize);
 }
 
-function clearShape(shape, xOffset, yOffset) {
-	shape.forEach((row, i) => {
-		row.forEach((block, j) => {
-			if (block !== 0) {
-				const x = xOffset + j;
-				const y = yOffset + i;
-				clearBlock(x, y, ctx);
+// Modify the clearShape function to clear the old position of the piece
+function clearShape(shape, x, y) {
+	for (let row = 0; row < shape.length; row++) {
+		for (let col = 0; col < shape[row].length; col++) {
+			if (shape[row][col] !== 0) {
+				const xCoord = x + col;
+				const yCoord = y + row;
+				if (yCoord >= 0 && yCoord < ROWS && xCoord >= 0 && xCoord < COLS) {
+					arr[yCoord][xCoord] = 0; // Clear the position on the game board table
+				}
+				clearBlock(xCoord, yCoord, ctx); // Clear the position on the canvas
 			}
-		});
-	});
+		}
+	}
 }
 
 // Create a function to clear the canvas
@@ -62,4 +67,20 @@ for (let i = 0; i < ROWS; i++) {
 		const color = colors[value] || "transparent";
 		drawBlock(x, y, color, ctx);
 	}
+}
+
+function updateGameBoard() {
+	clearShape(randomShape, xOffset, yOffset); // Clear the old position of the piece
+	for (let row = 0; row < randomShape.length; row++) {
+		for (let col = 0; col < randomShape[row].length; col++) {
+			if (randomShape[row][col] !== 0) {
+				const x = xOffset + col;
+				const y = yOffset + row;
+				if (y >= 0) {
+					arr[y][x] = randomShape[row][col];
+				}
+			}
+		}
+	}
+	console.table(arr);
 }

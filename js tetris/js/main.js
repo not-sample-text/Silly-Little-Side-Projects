@@ -1,5 +1,8 @@
-let xOffset = Math.floor((COLS - randomShape[0].length) / 2);
+// main.js
+
+let xOffset = Math.floor((COLS - randomShape[0][0].length) / 2); // Adjust for rotated blocks
 let yOffset = 0;
+let lastLockedPiece = null; // Variable to store the blocks of the previously locked piece
 
 play_button.addEventListener("click", () => {
 	if (play_button.textContent === "Play") {
@@ -25,9 +28,12 @@ function clearNextBlockCanvas() {
 // Check for a game over condition
 function isGameOver() {
 	// Check if the initial position is blocked
-	for (let row = 0; row < randomShape.length; row++) {
-		for (let col = 0; col < randomShape[row].length; col++) {
-			if (randomShape[row][col] !== 0) {
+	for (let row = 0; row < randomShape[0].length; row++) {
+		// Adjust for rotated blocks
+		for (let col = 0; col < randomShape[0][0].length; col++) {
+			// Adjust for rotated blocks
+			if (randomShape[0][row][col] !== 0) {
+				// Adjust for rotated blocks
 				const x = xOffset + col;
 				const y = yOffset + row;
 				if (y < 0 || (y < ROWS && arr[y][x] !== 0)) {
@@ -41,7 +47,6 @@ function isGameOver() {
 
 // Define a function to spawn a new piece
 function spawnNewPiece() {
-	console.table(arr);
 	// Get a new random shape
 	randomShape = getRandomShape();
 
@@ -52,21 +57,28 @@ function spawnNewPiece() {
 	yOffset = 0;
 
 	// Calculate the initial xOffset to center the piece
-	xOffset = Math.floor((COLS - randomShape[0].length) / 2);
+	xOffset = Math.floor((COLS - randomShape[0][0].length) / 2); // Adjust for rotated blocks
 
-	// Draw the new piece on the canvas
-	drawShape(randomShape, xOffset, yOffset);
-
-	// Apply the values of the locked piece to the game board (arr)
-	for (let row = 0; row < randomShape.length; row++) {
-		for (let col = 0; col < randomShape[row].length; col++) {
-			if (randomShape[row][col] !== 0) {
+	// Place the new piece in the game board array
+	for (let row = 0; row < randomShape[0].length; row++) {
+		// Adjust for rotated blocks
+		for (let col = 0; col < randomShape[0][0].length; col++) {
+			// Adjust for rotated blocks
+			if (randomShape[0][row][col] !== 0) {
+				// Adjust for rotated blocks
 				const x = xOffset + col;
 				const y = yOffset + row;
-				arr[y][x] = randomShape[row][col];
+				if (y >= 0) {
+					arr[y][x] = randomShape[0][row][col]; // Adjust for rotated blocks
+				}
 			}
 		}
 	}
+
+	console.table(arr);
+
+	// Draw the new piece on the canvas
+	drawShape(randomShape[0], xOffset, yOffset); // Adjust for rotated blocks
 }
 
 // Modify the play function to check for game over
