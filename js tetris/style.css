@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -559,6 +559,11 @@ canvas {
   --tw-border-opacity: 1;
   border-color: rgb(168 162 158 / var(--tw-border-opacity));
   padding: 0.25rem;
+}
+
+canvas#next-block {
+  height: 8rem;
+  width: 8rem;
 }
 
 div.game-content {

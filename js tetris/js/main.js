@@ -1,99 +1,93 @@
-// main.js
+// //main.js
 
-let xOffset = Math.floor((COLS - randomShape[0][0].length) / 2); // Adjust for rotated blocks
-let yOffset = 0;
-let lastLockedPiece = null; // Variable to store the blocks of the previously locked piece
+// // Calculate the initial xOffset to center the piece
+// let xOffset = Math.floor((COLS - tetromino.length) / 2);
 
-play_button.addEventListener("click", () => {
-	if (play_button.textContent === "Play") {
-		play_button.textContent = "Reset";
-		play();
-	} else {
-		play_button.textContent = "Play";
-		reset();
-		clearNextBlockCanvas(); // Clear the "Next Block" canvas
-	}
-});
+// // Set the initial yOffset to 0
+// let yOffset = 0;
 
-function reset() {
-	clearCanvas(); // Clear the game canvas
-	clearNextBlockCanvas(); // Clear the "Next Block" canvas
-	location.reload();
-}
+// function startGame() {
+// 	// Spawn a new block
+// 	spawnNewPiece();
+// 	moveDown();
+// }
 
-function clearNextBlockCanvas() {
-	nextBlockCtx.clearRect(0, 0, nextBlockCanvas.width, nextBlockCanvas.height);
-}
+// function reset() {
+// 	location.reload();
+// }
 
-// Check for a game over condition
-function isGameOver() {
-	// Check if the initial position is blocked
-	for (let row = 0; row < randomShape[0].length; row++) {
-		// Adjust for rotated blocks
-		for (let col = 0; col < randomShape[0][0].length; col++) {
-			// Adjust for rotated blocks
-			if (randomShape[0][row][col] !== 0) {
-				// Adjust for rotated blocks
-				const x = xOffset + col;
-				const y = yOffset + row;
-				if (y < 0 || (y < ROWS && arr[y][x] !== 0)) {
-					return true; // Game over
-				}
-			}
-		}
-	}
-	return false;
-}
+// function spawnNewPiece() {
+// 	// Draw the first piece on the canvas
+// 	drawShape(tetromino, xOffset, yOffset);
+// }
 
-// Define a function to spawn a new piece
-function spawnNewPiece() {
-	// Get a new random shape
-	randomShape = getRandomShape();
+// play_button.addEventListener("click", () => {
+// 	if (play_button.textContent === "Play") {
+// 		play_button.textContent = "Reset";
+// 		startGame();
+// 	} else {
+// 		play_button.textContent = "Play";
+// 		reset();
+// 	}
+// });
 
-	// Reset the piece state to "active"
-	blockState = "active";
+// // get the chosen random shape, calculate where the middle column would be, and draw the shape on the canvas
 
-	// Reset the yOffset to the top of the board
-	yOffset = 0;
+// /*
+// let xOffset = Math.floor((COLS - randomShape[0].length) / 2);
+// let yOffset = 0;
 
-	// Calculate the initial xOffset to center the piece
-	xOffset = Math.floor((COLS - randomShape[0][0].length) / 2); // Adjust for rotated blocks
+// function isGameOver() {
+// 	for (let row = 0; row < randomShape.length; row++) {
+// 		for (let col = 0; col < randomShape[row].length; col++) {
+// 			if (randomShape[row][col] !== 0) {
+// 				const x = xOffset + col;
+// 				const y = yOffset + row;
+// 				if (y < 0 || (y < ROWS && arr[y][x] !== 0)) {
+// 					return true;
+// 				}
+// 			}
+// 		}
+// 	}
+// 	return false;
+// }
 
-	// Place the new piece in the game board array
-	for (let row = 0; row < randomShape[0].length; row++) {
-		// Adjust for rotated blocks
-		for (let col = 0; col < randomShape[0][0].length; col++) {
-			// Adjust for rotated blocks
-			if (randomShape[0][row][col] !== 0) {
-				// Adjust for rotated blocks
-				const x = xOffset + col;
-				const y = yOffset + row;
-				if (y >= 0) {
-					arr[y][x] = randomShape[0][row][col]; // Adjust for rotated blocks
-				}
-			}
-		}
-	}
+// function spawnNewPiece() {
+// 	// Generate a new random shape for the game board
+// 	randomShape = getRandomShape();
+// 	blockState = "active";
+// 	yOffset = 0;
+// 	xOffset = Math.floor((COLS - randomShape[0].length) / 2);
+// 	drawShape(randomShape, xOffset, yOffset);
+// 	for (let row = 0; row < randomShape.length; row++) {
+// 		for (let col = 0; col < randomShape[row].length; col++) {
+// 			if (randomShape[row][col] !== 0) {
+// 				const x = xOffset + col;
+// 				const y = yOffset + row;
+// 				arr[y][x] = randomShape[row][col];
+// 			}
+// 		}
+// 	}
 
-	console.table(arr);
+// 	// Generate a new random shape for the "Next Block" canvas
+// 	const nextBlockShape = getRandomShape();
 
-	// Draw the new piece on the canvas
-	drawShape(randomShape[0], xOffset, yOffset); // Adjust for rotated blocks
-}
+// 	// Draw the new piece on the "Next Block" canvas
+// 	drawNextBlock(nextBlockShape);
+// }
 
-// Modify the play function to check for game over
-function play() {
-	if (isGameOver()) {
-		alert("Game Over"); // Display a game over message
-		reset();
-		return;
-	}
+// function play() {
+// 	if (isGameOver()) {
+// 		alert("Game Over");
+// 		reset();
+// 		return;
+// 	}
 
-	spawnNewPiece();
-	moveDown();
+// 	spawnNewPiece();
+// 	moveDown();
 
-	// Check if the piece is locked (i.e., it can't move down anymore)
-	if (blockState === "locked") {
-		spawnNewPiece(); // Spawn a new piece
-	}
-}
+// 	if (blockState === "locked") {
+// 		spawnNewPiece();
+// 	}
+// }
+// */

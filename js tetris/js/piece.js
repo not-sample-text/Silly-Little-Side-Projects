@@ -170,4 +170,8 @@ function getRandomPiece() {
 }
 
 // Usage example:
-const tetromino = getRandomPiece();
+const tetromino = {
+	shape: getRandomPiece(), // Initialize the Tetromino with a random shape
+	rotationIndex: 0, // Initialize the rotation index (you can set it to 0 for the initial rotation)
+	position: { x: 0, y: 0 } // Define an initial position
+};
