@@ -4,83 +4,90 @@ const canvas = document.getElementById("board");
 const ctx = canvas.getContext("2d");
 const play_button = document.getElementById("start");
 
-// Create the game board array and initialize it
-let arr = new Array(ROWS).fill().map(() => new Array(COLS).fill(0));
+// Create a 2D array to represent the game board
+let board = new Array(ROWS).fill().map(() => new Array(COLS).fill(0));
 
-// Modify the drawBlock function to accept x and y coordinates
-function drawBlock(x, y, color, ctx) {
-	const blockSize = BLOCK_SIZE;
+// Function to initialize the game board
+function initializeBoard() {
+	canvas.width = COLS * BLOCK_SIZE;
+	canvas.height = ROWS * BLOCK_SIZE;
+}
+
+// Call the initialization function when the page loads
+window.addEventListener("load", initializeBoard);
+
+// Function to draw an individual block at (x, y) with a specific color
+function drawBlock(x, y, color) {
 	ctx.fillStyle = color;
-	ctx.fillRect(x * blockSize, y * blockSize, blockSize, blockSize);
+	ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
 }
 
-// Create a function to draw a shape on the canvas
-function drawShape(shape, xOffset, yOffset) {
-	for (let i = 0; i < shape.length; i++) {
-		for (let j = 0; j < shape[i].length; j++) {
-			if (shape[i][j] !== 0) {
-				const x = xOffset + j;
-				const y = yOffset + i;
-				const color = colors[shape[i][j]];
-				drawBlock(x, y, color, ctx);
+// Function to draw an entire shape
+function drawShape(shape, offset, color) {
+	shape.forEach((row, rowIndex) => {
+		row.forEach((block, colIndex) => {
+			if (block) {
+				const x = offset.x + colIndex;
+				const y = offset.y + rowIndex;
+				drawBlock(x, y, color);
 			}
+		});
+	});
+}
+
+// Function to draw the initial game grid
+function drawGrid() {
+	for (let y = 0; y < ROWS; y++) {
+		for (let x = 0; x < COLS; x++) {
+			const value = board[y][x]; // Access the value from your game board array
+			const color = colors[value] || "transparent";
+			drawBlock(x, y, color);
 		}
 	}
 }
 
-function clearBlock(x, y, ctx) {
-	const blockSize = BLOCK_SIZE;
-	ctx.clearRect(x * blockSize, y * blockSize, blockSize, blockSize);
+// Function to clear an individual block at (x, y)
+function clearBlock(x, y) {
+	ctx.clearRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
 }
 
-// Modify the clearShape function to clear the old position of the piece
-function clearShape(shape, x, y) {
-	for (let row = 0; row < shape.length; row++) {
-		for (let col = 0; col < shape[row].length; col++) {
-			if (shape[row][col] !== 0) {
-				const xCoord = x + col;
-				const yCoord = y + row;
-				if (yCoord >= 0 && yCoord < ROWS && xCoord >= 0 && xCoord < COLS) {
-					arr[yCoord][xCoord] = 0; // Clear the position on the game board table
-				}
-				clearBlock(xCoord, yCoord, ctx); // Clear the position on the canvas
+// Function to clear an entire shape
+function clearShape(shape, offset) {
+	shape.forEach((row, rowIndex) => {
+		row.forEach((block, colIndex) => {
+			if (block) {
+				const x = offset.x + colIndex;
+				const y = offset.y + rowIndex;
+				clearBlock(x, y);
 			}
+		});
+	});
+}
+
+// Function to clear the entire game board
+function clearBoard() {
+	for (let y = 0; y < ROWS; y++) {
+		for (let x = 0; x < COLS; x++) {
+			clearBlock(x, y);
 		}
 	}
 }
 
-// Create a function to clear the canvas
-function clearCanvas() {
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
+// Function to update the game board with the new positions of the tetromino
+function updateGameBoard(tetromino, position, xOffset, yOffset) {
+	// Clear the old position of the tetromino
+	clearShape(tetromino.shape, position);
 
-// Calculate the canvas size based on the grid size
-canvas.width = COLS * BLOCK_SIZE;
-canvas.height = ROWS * BLOCK_SIZE;
-
-// Draw the initial grid
-for (let i = 0; i < ROWS; i++) {
-	for (let j = 0; j < COLS; j++) {
-		const x = j;
-		const y = i;
-		const value = arr[i][j];
-		const color = colors[value] || "transparent";
-		drawBlock(x, y, color, ctx);
-	}
-}
-
-function updateGameBoard() {
-	clearShape(randomShape, xOffset, yOffset); // Clear the old position of the piece
-	for (let row = 0; row < randomShape.length; row++) {
-		for (let col = 0; col < randomShape[row].length; col++) {
-			if (randomShape[row][col] !== 0) {
-				const x = xOffset + col;
-				const y = yOffset + row;
+	// Update the game board with the new position of the tetromino
+	for (let row = 0; row < tetromino.shape.length; row++) {
+		for (let col = 0; col < tetromino.shape[row].length; col++) {
+			if (tetromino.shape[row][col] !== 0) {
+				const x = position.x + col + xOffset;
+				const y = position.y + row + yOffset;
 				if (y >= 0) {
-					arr[y][x] = randomShape[row][col];
+					board[y][x] = tetromino.color;
 				}
 			}
 		}
 	}
-	console.table(arr);
 }

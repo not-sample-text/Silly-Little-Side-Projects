@@ -18,11 +18,6 @@ canvas {
 	@apply border-2 border-stone-400 p-1;
 }
 
-canvas#next-block {
-	width: 150px;
-	aspect-ratio: 3/2;
-}
-
 div.game-content {
 	@apply flex flex-col justify-between text-white;
 }

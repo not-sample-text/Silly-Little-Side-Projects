@@ -561,11 +561,6 @@ canvas {
   padding: 0.25rem;
 }
 
-canvas#next-block {
-  width: 150px;
-  aspect-ratio: 3/2;
-}
-
 div.game-content {
   display: flex;
   flex-direction: column;

@@ -142,36 +142,6 @@ const t_block = [
 	] // 270-degree rotation
 ];
 
-// Define a variable to store the current rotation index
-let currentRotationIndex = 0;
-
-function getRandomShape() {
-	// Define the available shapes
-	const shapes = [
-		i_block,
-		j_block,
-		l_block,
-		o_block,
-		s_block,
-		z_block,
-		t_block
-	];
-
-	// Choose a random shape from the array
-	const randomIndex = Math.floor(Math.random() * shapes.length);
-	const selectedShape = shapes[randomIndex];
-
-	// Create a copy of the selected shape's initial rotation
-	const initialRotation = selectedShape[0].map((row) => [...row]);
-
-	// Set the current rotation index to 0 (initial rotation)
-	currentRotationIndex = 0;
-
-	return initialRotation;
-}
-
-let randomShape = getRandomShape();
-
 //colors
 const colors = {
 	0: "transparent", // Empty square
@@ -183,3 +153,21 @@ const colors = {
 	6: "rgb(239 68 68)", // Z block
 	7: "rgb(139 92 246)" // T block
 };
+
+// Function to get a random tetromino piece
+function getRandomPiece() {
+	const pieces = [
+		i_block,
+		j_block,
+		l_block,
+		o_block,
+		s_block,
+		z_block,
+		t_block
+	];
+	const randomIndex = Math.floor(Math.random() * pieces.length);
+	return pieces[randomIndex][0]; // Return the first rotation of the randomly chosen piece
+}
+
+// Usage example:
+const tetromino = getRandomPiece();
