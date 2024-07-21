@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp"]; // Add more extensions if needed
+const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".xcf"]; // Add more extensions if needed
 
 function isImageFile(file) {
 	const extension = path.extname(file).toLowerCase();

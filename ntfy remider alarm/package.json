@@ -1,0 +1,6 @@
+{
+	"type": "module",
+	"dependencies": {
+		"ntfy": "^1.5.2"
+	}
+}
